@@ -1,0 +1,30 @@
+<!--
+  create by huangben 2018-5-18
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  <a href="/get?nodejs=hello" name="nodejs">get请求</a>
+
+  <form action="/post" method="post">
+    post测试:
+          nodejs:<input type="text" name="nodejs">
+    <input type="submit" value="按我">
+  </form>
+
+  <form method="put" action="/put">
+    <input type="hidden" name="_method" value="put"/>
+  </form>
+
+  <form method="delete" action="/delete">
+    <input type="hidden" name="_method" value="delete"/>
+  </form>
+
+  <a href="/httpclient" method="get">httpclient</a>
+
+  </body>
+</html>
