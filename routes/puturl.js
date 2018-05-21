@@ -6,8 +6,8 @@ var router = express.Router();
 
 /* put test listing. */
 router.put('/', function (req, res, next) {
-    console.log(req.query);
-    res.send(JSON.stringify(req.query));
+    console.log(req.body);
+    res.send(JSON.stringify(req.body));
 });
 
 module.exports = router;

@@ -6,14 +6,14 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
   </head>
   <body>
-  <a href="/get?nodejs=hello" name="nodejs">get请求</a>
+  <a href="/get?nodejs=get" name="nodejs">get请求</a>
 
-  <form action="/post" method="post">
-    post测试:
-          nodejs:<input type="text" name="nodejs">
-    <input type="submit" value="按我">
+  <form name="submitForm" method="POST" action="/post">
+    <input type="hidden" name="nodejs" value="post">
+    <A HREF="javascript:document.submitForm.submit()">post请求</A>
   </form>
 
   <form method="put" action="/put">
@@ -24,7 +24,52 @@
     <input type="hidden" name="_method" value="delete"/>
   </form>
 
-  <a href="/httpclient" method="get">httpclient</a>
-
+  <a href="/delete" class="a_delete">delete请求</a>
+  <script>
+      $(function() {
+          $(".a_delete").on("click",function(event){
+              event.preventDefault();
+              $.ajax({
+                  type: "DELETE",
+                  url: "/delete",
+                  contentType: "application/x-www-form-urlencoded;charset=utf-8",
+                  data: {
+                      nodejs:"delete"
+                  },
+                  dataType:"json",
+                  success: function(result){
+                      alert(JSON.stringify(result) + '删除成功');
+                  },
+                  error: function(result){
+                  }
+              });
+          });
+      });
+  </script>
+  <br>
+  <a href="/put" class="a_put">put请求</a>
+  <script>
+      $(function() {
+          $(".a_put").on("click",function(event){
+              event.preventDefault();
+              $.ajax({
+                  type: "PUT",
+                  url: "/put",
+                  contentType: "application/x-www-form-urlencoded",
+                  data: {
+                      nodejs:"put"
+                  },
+                  dataType:"json",
+                  success: function(result){
+                      alert(JSON.stringify(result) + 'put成功');
+                  },
+                  error: function(result){
+                  }
+              });
+          });
+      });
+  </script>
+  <br>
+  <a href="/httpclient" method="get">httpclient</a><br>
   </body>
 </html>
