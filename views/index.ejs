@@ -1,20 +1,29 @@
 <!--
   create by huangben 2018-5-18
 -->
-<!DOCTYPE html>
 <html>
+<style type="text/css">
+  a:link,a:visited{
+    text-decoration:none;  /*超链接无下划线*/
+  }
+  a:hover{
+    text-decoration:underline;  /*鼠标放上去有下划线*/
+  }
+</style>
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
-  <body>
-  <a href="/get?nodejs=hello" name="nodejs">get请求</a>
 
-  <form action="/post" method="post">
-    post测试:
-          nodejs:<input type="text" name="nodejs">
-    <input type="submit" value="按我">
+  <body>
+  <a href="/get?nodejs=get" name="nodejs">get请求</a>
+
+  <form name="submitForm" method="POST" action="/post">
+    <input type="hidden" name="nodejs" value="post">
+    <A HREF="javascript:document.submitForm.submit()">post请求</A>
   </form>
+
+  <a href="/httpclient" method="get">httpclient</a>
 
   <form method="put" action="/put">
     <input type="hidden" name="_method" value="put"/>
@@ -24,7 +33,25 @@
     <input type="hidden" name="_method" value="delete"/>
   </form>
 
-  <a href="/httpclient" method="get">httpclient</a>
 
+  <!--<a href="/get" class="a_post">get请求</a>-->
+  <!--<script type="text/javascript" src="../public/javascripts/jquery.min.js">-->
+      <!--$(".a_post").on("click",function(event){-->
+          <!--event.preventDefault();//使a自带的方法失效，即无法调整到href中的URL(http://www.baidu.com)-->
+          <!--$.ajax({-->
+              <!--type: "GET",-->
+              <!--url: "/get",-->
+              <!--contentType:"application/json",-->
+              <!--data: JSON.stringify({param1:param1,param2:param2}),//参数列表-->
+              <!--dataType:"json",-->
+              <!--success: function(result){-->
+                  <!--//请求正确之后的操作-->
+              <!--},-->
+              <!--error: function(result){-->
+                  <!--//请求失败之后的操作-->
+              <!--}-->
+          <!--});-->
+      <!--});-->
+  <!--</script>-->
   </body>
 </html>

@@ -10,7 +10,7 @@ router.post('/', function (req, res, next) {
         "nodejs": req.body.nodejs
     };
     console.info(response);
+    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     res.end(JSON.stringify(response));
 });
-
 module.exports = router;

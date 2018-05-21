@@ -6,6 +6,7 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
+  res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
   res.send('respond with a resource');
 });
 

@@ -7,6 +7,7 @@ var router = express.Router();
 /* put test listing. */
 router.put('/', function (req, res, next) {
     console.log(req.query);
+    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     res.send(JSON.stringify(req.query));
 });
 
