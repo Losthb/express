@@ -4,19 +4,18 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
-var www = require('../bin/www');
+var http = require('../bin/www');
 
 /* HTTP test listing. */
-router.get('/', function (req, res, next) {
-    const httpurl = `http://${www.ip}:9527/get?nodejs=hello`;
+router.get('/', function (req, res1, next,) {
+    const httpurl = `http://${http.ip1}:${http.port2}`+"/get?nodejs=httclient";
+    let hbbody;
     request(httpurl, function (error, res, body, req) {
         if (!error && res.statusCode == 200) {
             console.log(body);
+            hbbody = body;
         }
+        res1.end(hbbody)
     });
-    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-    res.send('http sucess');
 });
-
-
 module.exports = router;

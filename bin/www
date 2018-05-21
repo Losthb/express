@@ -92,4 +92,5 @@ function onListening() {
     console.info(`Server started at ${dizhi}`)
 }
 
-exports.ip = ip;
+module.exports.ip1 = ip;
+module.exports.port2 = port;
